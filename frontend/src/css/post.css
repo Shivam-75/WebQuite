@@ -1,0 +1,86 @@
+/* Container */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-color: rgba(2, 2, 53, 1);
+}
+
+/* Form */
+.post-form {
+  background: none;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  color: white;
+  background-color: rgba(1, 1, 37, 1);
+}
+
+/* Heading */
+.post-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+  background: none;
+}
+
+/* Labels */
+.post-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: white;
+  background: none;
+}
+
+/* Inputs & Textarea */
+.post-form input,
+.post-form textarea {
+  width: 100%;
+  padding: 15px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  background: none;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.3s;
+  color: white;
+  resize: none;
+}
+
+.post-form input:focus,
+.post-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Button */
+.post-form button {
+  width: 100%;
+  padding: 12px;
+  background: #0536e6ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.post-form button:hover {
+  background: #0056b3;
+}
+
+@media (max-width:750px) {
+  .post-form{
+    border: 2px dotted white;
+    width: 95vmin;
+  }
+}
+.post-form{
+    border: 2px dotted white;
+  }
