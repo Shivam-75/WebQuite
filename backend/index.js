@@ -13,9 +13,9 @@ config({
     path: "./.env"
 })
 cloudinary.config({
-    cloud_name: 'dqguh7vcs',
-    api_key: '877235684459949',
-    api_secret: 'd_AOBFDBv0s9kgJ88Z-fe7cDcKk'
+    cloud_name: process.env.CLOUDNARY,
+    api_key: process.env.API_KEY_CLODUNARY,
+    api_secret: process.env.API_SECREAT_KEY_CLODUNARY
 
 
 });
