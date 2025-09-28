@@ -30,7 +30,7 @@ export const StoreProvider = ({ children }) => {
   const [profilename, setprofilename] = useState();
 
   const profilenames = async () => {
-    const response = await fetch(`${VITE_BASEURL}/userdata`, {
+    const response = await fetch(`${import.meta.env.VITE_BASEURL}/userdata`, {
       method: "GET",
       headers: {
         "Content-Type": "Application/json",
@@ -56,7 +56,7 @@ export const StoreProvider = ({ children }) => {
     const quitedata = async () => {
       try {
         setQuiteLoading(true);
-        const res = await fetch(`${VITE_BASEURL}/getquite`, {
+        const res = await fetch(`${import.meta.env.VITE_BASEURL}/getquite`, {
           method: "GET",
           headers: {
             "Content-Type": "Application/json",
