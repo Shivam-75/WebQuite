@@ -20,13 +20,18 @@ cloudinary.config({
 
 });
 const app = express();
-app.use(express.json()); 
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-    origin: "*",
+    origin: [
+        "http://localhost:5173",
+        "https://web-quite-r2rm.vercel.app",
+        "https://web-quite-kr9s.vercel.app"
+
+    ],
     credentials: true,
-    methods:["GET","POST","DELETE"]
+    methods: ["GET", "POST", "DELETE"]
 }))
 
 app.use("/api/user", UserRoute);
