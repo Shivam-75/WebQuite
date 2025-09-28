@@ -31,6 +31,9 @@ app.use(cors({
 
 app.use("/api/user", UserRoute);
 app.use("/api/user", postRoute);
+app.get("/", (req, res) => {
+    res.send("hello");
+})
 
 
 db().then(() => {
