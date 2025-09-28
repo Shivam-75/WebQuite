@@ -30,7 +30,7 @@ const Login = () => {
       const response = await fetch(`${import.meta.env.VITE_BASEURL}/login`, {
         method: "POST",
         headers: {
-          "Content-Type": "Application/json",
+          "Content-Type": "application/json",
         },
         credentials: "include",
         body: JSON.stringify(login),
