@@ -78,9 +78,9 @@ export const login = async (req, res) => {
         }, process.env.SecreatKey, { expiresIn: "1d" });
 
         await res.cookie('token', Token, {
-            // httpOnly: true,
-            // secure: true,
-            // sameSite: 'Strict',
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
             maxAge: 24 * 60 * 60 * 1000
         });
 
