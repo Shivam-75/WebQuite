@@ -21,6 +21,7 @@ const Navbar = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success(data.message, toastercontents);
+        localStorage.removeItem("token");
       } else {
         toast.error(data.message, toastercontents);
       }
