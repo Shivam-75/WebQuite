@@ -6,6 +6,7 @@ import fs from 'fs/promises';
 
 export const Registration = async (req, res) => {
     const { name, email, password } = req.body;
+    console.log(name, email, password);
 
     try {
         if (!req.file) {
