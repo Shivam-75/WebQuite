@@ -26,7 +26,9 @@ const Card = ({ quitedata, datacross }) => {
       const data = await response.json();
       if (response.ok) {
         toast.success(data.message, toastercontents);
-        // window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       } else {
         toast.error(data.message, toastercontents);
       }
