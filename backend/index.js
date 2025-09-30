@@ -27,7 +27,9 @@ app.use(cors({
     origin: [
         "http://localhost:5173",
         "https://web-quite-r2rm.vercel.app",
-        "https://web-quite-kr9s.vercel.app"
+        "https://web-quite-kr9s.vercel.app",
+        "https://web-quite-vxg3.vercel.app"
+            
 
     ],
     credentials: true,
