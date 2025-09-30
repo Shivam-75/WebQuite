@@ -28,10 +28,10 @@ const Register = () => {
   const clickHandler = async (e) => {
     e.preventDefault();
 
-    const body = new FormData();
-    body.append("name", formData.name);
-    body.append("email", formData.email);
-    body.append("password", formData.password);
+    // const body = new FormData();
+    // body.append("name", formData.name);
+    // body.append("email", formData.email);
+    // body.append("password", formData.password);
     // if (formData.image) {
     //   body.append("avatar", formData.image);
     // }
@@ -42,21 +42,24 @@ const Register = () => {
         `${import.meta.env.VITE_BASEURL}/registration`,
         {
           method: "POST",
+          headers: {
+            "Content-Type":"application/json"
+          },
           credentials: "include",
-          body: body,
+          body: JSON.stringify(formData),
         }
       );
       const data = await response.json();
       if (response.ok) {
-        toast.success(data.message, toastercontents);
-        // console.log(data);
+        // toast.success(data.message, toastercontents);
+        console.log(data);
         setTimeout(() => {
           navigate("/api/user/login");
         }, 2000);
       } else {
-        // console.log(data);
+        console.log(data);
 
-        toast.error(data.message, toastercontents);
+        // toast.error(data.message, toastercontents);
       }
     } catch (error) {
       console.error("Error:", error);
