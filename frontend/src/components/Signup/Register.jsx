@@ -3,10 +3,12 @@ import "../../css/registration.css";
 import { useNavigate } from "react-router-dom";
 import Loader from "../loader/Loader";
 import { toast } from "react-toastify";
+import { useStore } from "../../store/Auth";
 
 const Register = () => {
   const navigate = useNavigate();
   const [laoding, setloading] = useState(false);
+  const { toastercontents } = useStore();
 
   const [formData, setFormData] = useState({
     name: "",
