@@ -51,15 +51,12 @@ const Register = () => {
       );
       const data = await response.json();
       if (response.ok) {
-        // toast.success(data.message, toastercontents);
-        console.log(data);
+        toast.success(data.message, toastercontents);
         setTimeout(() => {
           navigate("/api/user/login");
         }, 2000);
       } else {
-        console.log(data);
-
-        // toast.error(data.message, toastercontents);
+        toast.error(data.message, toastercontents);
       }
     } catch (error) {
       console.error("Error:", error);
