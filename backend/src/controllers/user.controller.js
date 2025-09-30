@@ -45,7 +45,7 @@ export const Registration = async (req, res) => {
         });
 
     } catch (err) {
-        return res.status(500).json({ message: "Server error during registration", success: false ,err});
+        return res.status(500).json({ message: "Server error during registration", success: false ,err:err.message});
     }
 };
 
