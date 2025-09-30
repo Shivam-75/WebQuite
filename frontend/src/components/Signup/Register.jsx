@@ -90,6 +90,7 @@ const Register = () => {
                 name="name"
                 type="text"
                 autoComplete="off"
+                required
                 onChange={changeHandler}
               />
             </div>
@@ -99,6 +100,7 @@ const Register = () => {
                 name="email"
                 type="email"
                 autoComplete="off"
+                required
                 onChange={changeHandler}
               />
             </div>
@@ -108,6 +110,7 @@ const Register = () => {
                 name="password"
                 type="password"
                 autoComplete="off"
+                required
                 onChange={changeHandler}
               />
             </div>
