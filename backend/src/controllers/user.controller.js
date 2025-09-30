@@ -111,7 +111,11 @@ export const userLogin = async (req, res) => {
 export const Logout = async (req, res) => {
     try {
 
-        const removerdata = res.clearCookie('token');
+        const removerdata = res.clearCookie('token', {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+        });
         if (!removerdata) {
             return res.status(400).json({ message: "Logout Faild ", success: false });
         }
