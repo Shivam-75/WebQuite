@@ -14,22 +14,15 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
-    image: null,
+    // image: null,
   });
 
   const changeHandler = (e) => {
-    const { name, value, type, files } = e.target;
-    if (type === "file") {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: files[0],
-      }));
-    } else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    }
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const clickHandler = async (e) => {
@@ -39,9 +32,9 @@ const Register = () => {
     body.append("name", formData.name);
     body.append("email", formData.email);
     body.append("password", formData.password);
-    if (formData.image) {
-      body.append("avatar", formData.image);
-    }
+    // if (formData.image) {
+    //   body.append("avatar", formData.image);
+    // }
 
     try {
       setloading(true);
@@ -56,12 +49,12 @@ const Register = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success(data.message, toastercontents);
-        console.log(data);
+        // console.log(data);
         setTimeout(() => {
           navigate("/api/user/login");
         }, 2000);
       } else {
-                console.log(data);
+        // console.log(data);
 
         toast.error(data.message, toastercontents);
       }
@@ -118,7 +111,7 @@ const Register = () => {
                 onChange={changeHandler}
               />
             </div>
-            <div className="register-div">
+            {/* <div className="register-div">
               <label htmlFor="">Image</label>
               <input
                 name="image"
@@ -126,7 +119,7 @@ const Register = () => {
                 accept="image/*"
                 onChange={changeHandler}
               />
-            </div>
+            </div> */}
             <div className="register-button">
               <button type="submit">Register</button>
             </div>

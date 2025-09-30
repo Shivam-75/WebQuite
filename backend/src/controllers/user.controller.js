@@ -1,112 +1,56 @@
 import { User } from "../models/user.models.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { v2 as cloudinary } from 'cloudinary';
-import fs from 'fs/promises';
-import streamifier from "streamifier";
-
-// export const Registration = async (req, res) => {
-//     const { name, email, password } = req.body;
-
-//     try {
-//         if (!req.file) {
-//             return res.status(400).json({ error: "File is missing or invalid" });
-//         }
-
-//         if (!name || !email || !password) {
-//             return res.status(400).json({ message: "Please fill all fields", success: false });
-//         }
-
-//         const userExist = await User.findOne({ email });
-//         if (userExist) {
-//             return res.status(409).json({ message: "Email already in use", success: false });
-//         }
-
-//         const uploadResult = await cloudinary.uploader.upload(req.file.path);
-
-//         try {
-//             await fs.unlink(req.file.path);
-//             console.log("Deleted local file:", req.file.path);
-//         } catch (unlinkError) {
-//             console.error("Failed to delete file:", unlinkError);
-//         }
-
-//         const hashedPassword = await bcrypt.hash(password, 10);
-
-//         await User.create({
-//             name,
-//             email,
-//             password: hashedPassword,
-//             url: uploadResult.secure_url
-//         });
-
-//         return res.status(201).json({
-//             message: "User registered successfully",
-//             success: true,
-//         });
-
-//     } catch (err) {
-//         return res.status(500).json({ message: "Server error during registration", success: false ,err});
-//     }
-// };
-
+// import { v2 as cloudinary } from 'cloudinary';
+// import fs from 'fs/promises';
 
 export const Registration = async (req, res) => {
     const { name, email, password } = req.body;
 
     try {
-        // Validate fields
+        // if (!req.file) {
+        //     return res.status(400).json({ error: "File is missing or invalid" });
+        // }
+
         if (!name || !email || !password) {
             return res.status(400).json({ message: "Please fill all fields", success: false });
         }
 
-        if (!req.file) {
-            return res.status(400).json({ message: "File is missing or invalid", success: false });
-        }
-
-        // Check if user already exists
         const userExist = await User.findOne({ email });
         if (userExist) {
             return res.status(409).json({ message: "Email already in use", success: false });
         }
 
-        // Upload file to Cloudinary from memory buffer
-        const uploadFromBuffer = (fileBuffer) => {
-            return new Promise((resolve, reject) => {
-                const stream = cloudinary.uploader.upload_stream((error, result) => {
-                    if (error) reject(error);
-                    else resolve(result);
-                });
-                streamifier.createReadStream(fileBuffer).pipe(stream);
-            });
-        };
+        // const uploadResult = await cloudinary.uploader.upload(req.file.path);
 
-        const uploadResult = await uploadFromBuffer(req.file.buffer);
+        // try {
+        //     await fs.unlink(req.file.path);
+        //     console.log("Deleted local file:", req.file.path);
+        // } catch (unlinkError) {
+        //     console.error("Failed to delete file:", unlinkError);
+        // }
 
-        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create user
         await User.create({
             name,
             email,
             password: hashedPassword,
-            url: uploadResult.secure_url, // Cloudinary URL
+            // url: uploadResult.secure_url
         });
 
         return res.status(201).json({
             message: "User registered successfully",
             success: true,
         });
+
     } catch (err) {
-        console.error("Registration error:", err);
-        return res.status(500).json({
-            message: "Server error during registration",
-            success: false,
-            err: err.message,
-        });
+        return res.status(500).json({ message: "Server error during registration", success: false ,err});
     }
 };
+
+
+
 //? login---
 
 export const login = async (req, res) => {
