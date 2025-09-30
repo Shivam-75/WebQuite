@@ -15,8 +15,6 @@ const LoginOrnat = () => {
   if (profilename || isLogin) {
     return <Outlet />;
   }
-
-  // You could return null, or a spinner/placeholder while redirecting
   return null;
 };
 
