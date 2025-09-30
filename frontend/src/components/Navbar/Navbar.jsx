@@ -42,15 +42,18 @@ const Navbar = () => {
             <NavLink to={"/"}>Quotes</NavLink>
             <NavLink to={"/api/user/upload-post"}>post</NavLink>
             <NavLink to={"/api/user/profile"}>Profile</NavLink>
-            <NavLink
-              to={"/api/user/login"}
-              onClick={() => {
-                logout();
-                setlogout();
-                setlogindata(false);
-              }}>
-              Logout
-            </NavLink>
+            <a href="">
+              {" "}
+              <li
+                style={{ listStyle: "none", fontWeight: "800" }}
+                onClick={() => {
+                  logout();
+                  setlogout();
+                  setlogindata(false);
+                }}>
+                Logout
+              </li>
+            </a>
           </>
         ) : (
           <NavLink to={"/api/user/signup"}>signup</NavLink>
