@@ -32,9 +32,9 @@ const Profilebox = () => {
   return (
     <>
       <div className="profile-main">
-        <div className="profile-imgs">
+        {/* <div className="profile-imgs">
           <img src={profilename?.url} alt="" />
-        </div>
+        </div> */}
         <div className="profile-data">
           <p>Name : {profilename?.name}</p>
           <p>Post :{count}</p>

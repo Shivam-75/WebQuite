@@ -60,12 +60,6 @@ const Navbar = () => {
           <NavLink to={"/api/user/signup"}>signup</NavLink>
         )}
       </nav>
-      {isLogin && isLogin && (
-        <div className="userId">
-          <img src={profilename?.url} alt="" />
-          {/* <p className="userid-imgs-text">{profilename?.name}</p> */}
-        </div>
-      )}
     </header>
   );
 };

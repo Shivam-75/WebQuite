@@ -28,34 +28,34 @@ export const StoreProvider = ({ children }) => {
     autoClose: 1000,
     theme: "dark",
   };
-  // const [profilename, setprofilename] = useState();
+  const [profilename, setprofilename] = useState();
 
-  // const profilenames = async () => {
-  //   const response = await fetch(`${import.meta.env.VITE_BASEURL}/userdata`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "Application/json",
-  //     },
-  //     credentials: "include",
-  //   });
+  const profilenames = async () => {
+    const response = await fetch(`${import.meta.env.VITE_BASEURL}/userdata`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      credentials: "include",
+    });
 
-  //   const data = await response.json();
-  //   if (response.ok) {
-  //     setprofilename(data?.data);
-  //   } else {
-  //     console.log(data);
-  //   }
-  // };
+    const data = await response.json();
+    if (response.ok) {
+      setprofilename(data?.data);
+    } else {
+      console.log(data);
+    }
+  };
 
-  // useEffect(() => {
-  //   profilenames();
-  // }, [login]);
+  useEffect(() => {
+    profilenames();
+  }, [login]);
 
 
   return (
     <StoreContext.Provider
       value={{
-        // profilename,
+        profilename,
         isLogin,
         toastercontents,
         setlogout,
