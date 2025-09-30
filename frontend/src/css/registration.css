@@ -9,8 +9,9 @@
   background: none;
   padding: 10px;
   background: none;
-  width: 95vmin;
   border-radius: 12px;
+    width: 70vmin;
+
   color: white;
   border: 1px solid white;
 }
@@ -32,7 +33,7 @@ input {
   border-radius: 4px;
   border: 1px solid white;
   color: white;
-  background:none;
+  background: none;
 }
 .register-button {
   margin-top: 30px;
@@ -66,4 +67,10 @@ button:active {
 }
 .register-forget span:hover {
   color: blue;
+}
+
+@media (max-width: 750px) {
+  .register-cards {
+    width: 95vmin;
+  }
 }

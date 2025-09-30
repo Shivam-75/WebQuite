@@ -9,17 +9,18 @@ export const StoreProvider = ({ children }) => {
   const [login, setlogindata] = useState(localStorage.getItem("token"));
 
   const isLogin = !!login;
+  console.log(isLogin)
 
   const setisadmin = (token) => {
     setlogindata(true);
-    return localStorage.setItem("token", token);
+     localStorage.setItem("token", token);
   };
 
   //todo logout====
 
   const setlogout = () => {
     setlogindata(false);
-    return localStorage.removeItem("token");
+    localStorage.removeItem("token");
   };
 
   const toastercontents = {
@@ -27,34 +28,34 @@ export const StoreProvider = ({ children }) => {
     autoClose: 1000,
     theme: "dark",
   };
-  const [profilename, setprofilename] = useState();
+  // const [profilename, setprofilename] = useState();
 
-  const profilenames = async () => {
-    const response = await fetch(`${import.meta.env.VITE_BASEURL}/userdata`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      credentials: "include",
-    });
+  // const profilenames = async () => {
+  //   const response = await fetch(`${import.meta.env.VITE_BASEURL}/userdata`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "Application/json",
+  //     },
+  //     credentials: "include",
+  //   });
 
-    const data = await response.json();
-    if (response.ok) {
-      setprofilename(data?.data);
-      setisadmin(true);
-    } else {
-      console.log(data);
-    }
-  };
-  useEffect(() => {
-    profilenames();
-  }, [login]);
+  //   const data = await response.json();
+  //   if (response.ok) {
+  //     setprofilename(data?.data);
+  //   } else {
+  //     console.log(data);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   profilenames();
+  // }, [login]);
 
 
   return (
     <StoreContext.Provider
       value={{
-        profilename,
+        // profilename,
         isLogin,
         toastercontents,
         setlogout,

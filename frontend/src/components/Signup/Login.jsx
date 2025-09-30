@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Loader from "../loader/Loader";
 
 const Login = () => {
-  const { setisadmin, toastercontents } = useStore();
+  const { toastercontents, setisadmin } = useStore();
   const navigate = useNavigate();
 
   const [login, setlogin] = useState({
@@ -38,10 +38,10 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success(data.message, toastercontents);
+        setisadmin(true)
         setTimeout(() => {
           navigate("/");
         }, 2000);
-        setisadmin(true);
       } else {
         toast.error(data.message, toastercontents);
       }
