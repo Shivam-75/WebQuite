@@ -38,7 +38,6 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success(data.message, toastercontents);
-        console.log(data.message);
         setTimeout(() => {
           navigate("/");
         }, 2000);
@@ -55,12 +54,17 @@ const Login = () => {
 
   return (
     <>
-      {loading ? (
-        <div style={{ position:"absolute" ,left:"46%", top:"47%"}}>
+      {loading && (
+        <div
+          style={{
+            position: "absolute",
+            background: "none",
+            left: "40%",
+            top: "50%",
+          }}>
+          {" "}
           <Loader />
         </div>
-      ) : (
-        ""
       )}
       <div className="register-main">
         <div className="register-cards">

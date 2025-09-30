@@ -27,14 +27,17 @@ export default function PostForm() {
 
     try {
       setlaodingdata(true);
-      const response = await fetch(`${import.meta.env.VITE_BASEURL}/postquite`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "Application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BASEURL}/postquite`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "Application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
@@ -44,7 +47,7 @@ export default function PostForm() {
           window.location.reload();
         }, 1000);
       } else {
-        console.log(data);
+        toast.error(data.message, toastercontents);
       }
     } catch (err) {
       console.log("Post error ", err);
@@ -55,13 +58,12 @@ export default function PostForm() {
 
   return (
     <>
-      {laoding ? (
-        <div style={{ position: "absolute", left:"46%", top:"50%" }}>
+      {laoding && (
+        <div style={{            background:"none"
+, position: "absolute", left: "46%", top: "50%" }}>
           {" "}
           <Loader />
         </div>
-      ) : (
-        ""
       )}
       <div className="form-container">
         <form onSubmit={handleSubmit} className="post-form">

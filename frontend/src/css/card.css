@@ -2,6 +2,7 @@
   width: 45vmin;
   margin: auto;
   display: flex;
+  position: relative;
   font-family: cursive;
 }
 .inner-card {
@@ -34,6 +35,7 @@
   padding: 0px 10px;
   font-size: 1.8vmin;
   background: none;
+
 }
 .inner-card button {
   padding: 10px 40px;
@@ -67,7 +69,7 @@
   }
   .inner-card p {
     padding: 20px 10px;
-    font-size: 2.8vmin;
+    font-size: 4vmin;
   }
   .inner-card h4 {
     font-size: 3.8vmin;
@@ -78,8 +80,8 @@
   font-size: 20px;
   position: absolute;
   z-index: 1;
-  top: -8px;
   right: 8px;
+  top:-8px;
   background: none;
 }
 .iconst-card {

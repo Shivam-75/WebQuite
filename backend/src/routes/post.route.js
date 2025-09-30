@@ -6,4 +6,4 @@ export const postRoute = express.Router();
 postRoute.post("/postquite", AuthMiddleware,postQuites)
 postRoute.get("/getquite", getQuites)
 postRoute.get("/getuserQuites", AuthMiddleware, userQutesOnly)
-postRoute.delete("/deleteuserQuites/:id", quiteDelte);
+postRoute.delete("/deleteuserQuites/:id", AuthMiddleware, quiteDelte);

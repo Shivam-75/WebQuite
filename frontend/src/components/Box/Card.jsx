@@ -8,10 +8,11 @@ import { toast } from "react-toastify";
 import { useStore } from "../../store/Auth";
 const Card = ({ quitedata, datacross }) => {
   const navigate = useNavigate();
-  console.log(datacross);
+  const [loadingpost, setloadingpost] = useState(false);
   const { toastercontents } = useStore();
   const deleteData = async (datas) => {
     try {
+      setloadingpost(true);
       const response = await fetch(
         `${import.meta.env.VITE_BASEURL}/deleteuserQuites/${datas}`,
         {
@@ -25,12 +26,14 @@ const Card = ({ quitedata, datacross }) => {
       const data = await response.json();
       if (response.ok) {
         toast.success(data.message, toastercontents);
-       setTimeout(() => {
-         window.location.reload();
-       }, 1000);
+        // window.location.reload();
+      } else {
+        toast.error(data.message, toastercontents);
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setloadingpost(false);
     }
   };
 
@@ -45,16 +48,30 @@ const Card = ({ quitedata, datacross }) => {
             justifyContent: "center",
             alignItems: "center",
           }}>
-          <h1
-            style={{
-              color: "white",
-              fontSize: "40px",
-            }}>
-            Post Not Found{" "}
-          </h1>
+          {setTimeout(() => {
+            <h1
+              style={{
+                color: "white",
+                fontSize: "40px",
+              }}>
+              Post Not Found{" "}
+            </h1>;
+          }, 3000)}
         </div>
       ) : (
         <div className="flex-post">
+          {loadingpost && (
+            <div
+              style={{
+                position: "absolute",
+                zIndex: 1,
+                top: "60%",
+                left: "46%",
+                background: "none",
+              }}>
+              <Loader />
+            </div>
+          )}
           {quitedata?.map((item, index) => (
             <div key={index} className="card-main">
               {datacross ? (
@@ -66,7 +83,7 @@ const Card = ({ quitedata, datacross }) => {
                   {<GiCrossedSwords className="iconst-card" />}
                 </p>
               ) : (
-               ""
+                ""
               )}
 
               <div className="inner-card">

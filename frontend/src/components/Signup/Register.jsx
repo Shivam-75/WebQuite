@@ -70,13 +70,12 @@ const Register = () => {
 
   return (
     <>
-      {laoding ? (
-        <div style={{ position: "absolute", left: "46%", top: "47%" }}>
+      {laoding && (
+        <div style={{            background:"none"
+, position: "absolute", left: "46%", top: "47%" }}>
           <Loader />
         </div>
-      ) : (
-        ""
-      )}{" "}
+      )}
       <div className="register-main">
         <div className="register-cards">
           <div className="register-logo">

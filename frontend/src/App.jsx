@@ -7,6 +7,7 @@ import PostForm from "./components/post/Form";
 import Register from "./components/Signup/Register";
 import Profiles from "./pages/ss/Profiles";
   import { ToastContainer, toast } from "react-toastify";
+import LoginOrnat from "./components/admin/LoginOrnat";
 
 
 
@@ -15,17 +16,15 @@ const App = () => {
     <>
       <Navbar />
       <Routes>
-        <Route path="/api/user/profile" element={<Profiles />} />
-        <Route path="/api/user/upload-post" element={<PostForm />} />
-        <Route path="/" element={<Post />} />
-        <Route path="/api/user/signup" element={<Register />} />
-        <Route path="/api/user/login" element={<Login />} />
+        <Route  element={<LoginOrnat />}>
+          <Route path="/api/user/profile" element={<Profiles />} />
+          <Route path="/api/user/upload-post" element={<PostForm />} />
+          <Route path="/" element={<Post />} />
+        </Route>
+          <Route path="/api/user/signup" element={<Register />} />
+          <Route path="/api/user/login" element={<Login />} />
       </Routes>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        theme="dark"
-      />
+      <ToastContainer position="top-right" autoClose={5000} theme="dark" />
     </>
   );
 };

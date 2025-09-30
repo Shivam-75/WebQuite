@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import { User } from "../models/user.models.js";
 
 export const AuthMiddleware = async (req, res, next) => {
-    const { token } = req.cookies || {};
+    const { token } = await req.cookies;
     try {
         if (!token) {
             return res.status(401).json({ message: "No token found", success: false });

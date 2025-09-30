@@ -1,31 +1,41 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../../css/navbar.css";
 import { useStore } from "../../store/Auth";
 import { toast } from "react-toastify";
 const Navbar = () => {
-  const { profilename,toastercontents, isLogin, setlogout, setlogindata } = useStore();
+  const { profilename, toastercontents, isLogin, setlogout, setlogindata } =
+    useStore();
+  const navigate = useNavigate();
+
 
   const logout = async () => {
-    const response = await fetch(`${import.meta.env.VITE_BASEURL}/logout`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      credentials: "include",
-    });
-    const data = await response.json();
-    if (response.ok) {
-      console.log(data);
-    } else {
-      console.log("user Error ");
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BASEURL}/logout`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        credentials: "include",
+      });
+      const data = await response.json();
+      if (response.ok) {
+        toast.success(data.message, toastercontents);
+      } else {
+        toast.error(data.message, toastercontents);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
-
   return (
     <header className="nav-main">
-      <img src="/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvam9iNjgwLTE2Ni1wLWwxZGJ1cTN2LnBuZw-removebg-preview.png" alt="" style={{height:"80px", background:"none"}} />
+      <img
+        src="/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvam9iNjgwLTE2Ni1wLWwxZGJ1cTN2LnBuZw-removebg-preview.png"
+        alt=""
+        style={{ height: "80px", background: "none" }}
+      />
       <nav className="nav-box">
         {isLogin && isLogin ? (
           <>
@@ -46,13 +56,11 @@ const Navbar = () => {
           <NavLink to={"/api/user/signup"}>signup</NavLink>
         )}
       </nav>
-      {isLogin && isLogin ? (
+      {isLogin && isLogin && (
         <div className="userId">
           <img src={profilename?.url} alt="" />
           {/* <p className="userid-imgs-text">{profilename?.name}</p> */}
         </div>
-      ) : (
-          ""
       )}
     </header>
   );

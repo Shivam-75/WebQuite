@@ -23,6 +23,9 @@ const Profilebox = () => {
         setquite(data.userPostes);
         setcount(data.count);
       }
+      else {
+        console.log(data);
+      }
     };
     userQuites();
   }, []);

@@ -50,13 +50,14 @@ export const userQutesOnly = async (req, res) => {
 
 //todo get all the quites
 export const getQuites = async (req, res) => {
+
     try {
         const postQuite = await Quites.find().sort({ createdAt: -1 });
         if (!postQuite) {
             return res.status(400).json({ message: "User Not Post Any Quites ", success: false });
         }
 
-        return res.status(200).json({ message: "Successfull data Fatched", success: true, postQuite,  });
+        return res.status(200).json({ message: "Successfull data Fatched", success: true, postQuite });
 
     } catch (err) {
         return res.status(500).json({ message: "Server Post Error ", success: false, err });
