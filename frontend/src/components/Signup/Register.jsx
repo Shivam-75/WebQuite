@@ -71,8 +71,13 @@ const Register = () => {
   return (
     <>
       {laoding && (
-        <div style={{            background:"none"
-, position: "absolute", left: "46%", top: "47%" }}>
+        <div
+          style={{
+            background: "none",
+            position: "absolute",
+            left: "46%",
+            top: "47%",
+          }}>
           <Loader />
         </div>
       )}
