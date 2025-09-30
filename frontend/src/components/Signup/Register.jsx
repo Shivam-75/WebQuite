@@ -56,11 +56,13 @@ const Register = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success(data.message, toastercontents);
-
+        console.log(data);
         setTimeout(() => {
           navigate("/api/user/login");
         }, 2000);
       } else {
+                console.log(data);
+
         toast.error(data.message, toastercontents);
       }
     } catch (error) {
