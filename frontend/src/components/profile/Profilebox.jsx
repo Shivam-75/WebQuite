@@ -3,11 +3,14 @@ import "../../css/profilebox.css";
 import Card from "../Box/Card";
 import { useStore } from "../../store/Auth";
 const Profilebox = () => {
+  const [laoding, setlaoding] = useState(false);
   const [quite, setquite] = useState([]);
   const [count, setcount] = useState();
   const { profilename } = useStore();
-  useEffect(() => {
-    const userQuites = async () => {
+
+  const userQuites = async () => {
+    setlaoding(true);
+    try {
       const response = await fetch(
         `${import.meta.env.VITE_BASEURL}/getuserQuites`,
         {
@@ -18,6 +21,7 @@ const Profilebox = () => {
           credentials: "include",
         }
       );
+
       const data = await response.json();
       if (response.ok) {
         setquite(data.userPostes);
@@ -25,7 +29,14 @@ const Profilebox = () => {
       } else {
         console.log(data);
       }
-    };
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setlaoding(false);
+    }
+  };
+
+  useEffect(() => {
     userQuites();
   }, []);
 
@@ -41,7 +52,7 @@ const Profilebox = () => {
         </div>
       </div>
       <hr className="profile-line" />
-      <Card quitedata={quite} datacross={true} />
+      <Card quitedata={quite} datacross={true} loading={laoding} />
     </>
   );
 };
