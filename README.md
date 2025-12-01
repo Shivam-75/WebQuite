@@ -1,6 +1,9 @@
 # 🧪 Pathology Management System
 
-A simple **Pathology Management System** built using **React.js**, **Node.js**, **Express.js**, and **MongoDB** with **JWT authentication**.
+```sh
+https://github.com/Shivam-75/WebQuite.git
+```
+**WebQuote** built using **React.js**, **Node.js**, **Express.js**, and **MongoDB** with **JWT authentication**.
 
 ---
 
@@ -21,7 +24,4 @@ A simple **Pathology Management System** built using **React.js**, **Node.js**, 
 
 ---
 
-## Demo 
-
-## git clone : https://github.com/Shivam-75/WebQuite.git
 ## demo: https://web-quite-vxg3.vercel.app
