@@ -1,4 +1,4 @@
-# 🧪 Pathology Management System
+# WebQuote
 
 ```sh
 https://github.com/Shivam-75/WebQuite.git
